@@ -1,5 +1,7 @@
 # Blender for Codex — 1.3
 
+Открытый проект: приветствуются [участие в разработке](CONTRIBUTING.md), сообщения об ошибках и pull requests. Ближайшие задачи — в [плане развития](ROADMAP.md).
+
 Локальная интеграция Codex ↔ Blender: MCP-сервер, дополнение Blender, навык агента, установщик и диагностика. Это адаптация открытого сервера [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp), как в [плагине Kimi](https://github.com/artmediastudio/kimi-blender-mcp-plugin). Лицензия MIT; версии исходников зафиксированы в UPSTREAM.json. Это сторонний проект.
 
 ## Возможности
