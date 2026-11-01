@@ -5,6 +5,14 @@ description: Connect Codex to local Blender and inspect, create, edit, render or
 
 # Blender for Codex
 
+## Experimental local ComfyUI
+
+For requested local image-to-3D, read `../../docs/COMFYUI-RU.md`. Use `comfy_status`,
+`comfy_generate`, `comfy_job`, then `comfy_import` after inspecting the current scene.
+These tools require a running local ComfyUI and separately installed Hunyuan3D 2.0 weights.
+Never claim GPU generation has been validated solely from offline bridge tests.
+Do not retry timed-out submissions automatically. Review generated geometry with `look`.
+
 Use the `codex-blender` MCP tools with a running local Blender instance.
 This package adapts the MIT ahujasid/blender-mcp server for Codex; it is not an official Blender or OpenAI product.
 

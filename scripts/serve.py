@@ -29,6 +29,8 @@ def main():
     register_spatial(server)
     from edit_tools import register as register_edits
     register_edits(server)
+    from comfy_tools import register as register_comfy
+    register_comfy(server)
     server.main()
     return 0
 
