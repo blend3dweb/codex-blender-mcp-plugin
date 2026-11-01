@@ -22,9 +22,11 @@ def endpoint():
     return value
 
 
-def workflow(image, checkpoint, seed=0, steps=20, resolution=192):
+def workflow(image, checkpoint, seed=0, steps=20, resolution=192, guidance=5.5):
     if not 0 <= seed < 2**64 or not 1 <= steps <= 50 or resolution not in (128, 192, 256):
         raise ValueError('seed: uint64; steps: 1..50; resolution: 128, 192 or 256')
+    if not 1 <= guidance <= 10:
+        raise ValueError('guidance: 1..10')
     def node(name, **inputs):
         return {'class_type': name, 'inputs': inputs}
     return {
@@ -35,7 +37,7 @@ def workflow(image, checkpoint, seed=0, steps=20, resolution=192):
         '5': node('EmptyLatentHunyuan3Dv2', resolution=3072, batch_size=1),
         '10': node('ModelSamplingAuraFlow', model=['1', 0], shift=1.0),
         '6': node('KSampler', model=['10', 0], positive=['4', 0], negative=['4', 1],
-                  latent_image=['5', 0], seed=seed, steps=steps, cfg=1.0,
+                  latent_image=['5', 0], seed=seed, steps=steps, cfg=guidance,
                   sampler_name='euler', scheduler='normal', denoise=1.0),
         '7': node('VAEDecodeHunyuan3D', samples=['6', 0], vae=['1', 2],
                   num_chunks=4000, octree_resolution=resolution),
@@ -101,14 +103,15 @@ def register(server):
 
     @server.mcp.tool()
     async def comfy_generate(image_path: str, checkpoint: str = 'hunyuan3d-dit-v2.safetensors',
-                             seed: int = 0, steps: int = 20, resolution: int = 192) -> str:
+                             seed: int = 0, steps: int = 20, resolution: int = 192,
+                             guidance: float = 5.5) -> str:
         """Upload a local PNG/JPEG and queue Hunyuan3D 2.0 geometry only. Use an isolated subject on a plain background. Returns prompt_id; poll comfy_job. No automatic retry: submission timeouts may still have queued work. Requires installed weights; no textures, rig or guaranteed likeness."""
         path = Path(image_path)
         if path.suffix.lower() not in ('.png', '.jpg', '.jpeg') or not path.is_file():
             raise ValueError('Expected an existing PNG/JPEG')
         if path.stat().st_size > 20 * 1024**2:
             raise ValueError('Image limit: 20 MiB')
-        graph = workflow('pending.png', checkpoint, seed, steps, resolution)
+        graph = workflow('pending.png', checkpoint, seed, steps, resolution, guidance)
         async with client() as http:
             info = await request(http, 'GET', '/object_info')
             missing = {n['class_type'] for n in graph.values()} - info.keys()

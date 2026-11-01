@@ -1,4 +1,4 @@
-# Blender for Codex — 1.4.0
+# Blender for Codex — 1.4.1
 
 Открытый проект: приветствуются [участие в разработке](CONTRIBUTING.md), сообщения об ошибках и pull requests. Ближайшие задачи — в [плане развития](ROADMAP.md).
 
