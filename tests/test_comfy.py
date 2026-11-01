@@ -75,6 +75,12 @@ class BridgeTests(unittest.IsolatedAsyncioTestCase):
             with self.assertRaises(ValueError):
                 bridge.workflow('x', 'model', *args)
 
+    def test_guidance_bounds(self):
+        for value in (0, 11, float('nan')):
+            with self.assertRaises(ValueError):
+                bridge.workflow('x', 'model', guidance=value)
+        self.assertEqual(bridge.workflow('x', 'model', guidance=5.5)['6']['inputs']['cfg'], 5.5)
+
     async def test_submit_image_and_graph(self):
         with tempfile.TemporaryDirectory() as folder:
             image = Path(folder) / 'image.png'
