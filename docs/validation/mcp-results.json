@@ -1,0 +1,32 @@
+{
+  "blender": "5.2.2 LTS",
+  "tools": [
+    "get_addon_status",
+    "disable_telemetry",
+    "get_scene_info",
+    "execute_blender_code",
+    "record_trajectory_feedback",
+    "look",
+    "generate_3d",
+    "search_assets",
+    "import_asset",
+    "studio_capabilities",
+    "studio_action",
+    "spatial_capabilities",
+    "spatial_inspect",
+    "edit_capabilities",
+    "edit_session"
+  ],
+  "checks": [
+    "new tools listed",
+    "edit catalog accessible",
+    "spatial topology accessible",
+    "snapshot created",
+    "before image",
+    "local deform and fixed-view comparison",
+    "after image",
+    "exact restore",
+    "external edit protected",
+    "snapshot discarded"
+  ]
+}

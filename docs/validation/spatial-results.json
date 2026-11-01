@@ -1,0 +1,26 @@
+{
+  "blender": "5.2.2 LTS",
+  "checks": [
+    "closed cube topology",
+    "world coordinates and nonuniform scale",
+    "pagination",
+    "edge connectivity",
+    "face normals",
+    "stale hash refused",
+    "plane intersects cube",
+    "section limit explicit",
+    "coplanar faces reported",
+    "known surface separation",
+    "nested solids remain unsigned and inconclusive",
+    "floating island and open boundary detected",
+    "camera reference residual zero",
+    "base vs evaluated indices explicit",
+    "missing mesh",
+    "zero plane normal",
+    "invalid vertex",
+    "output cap",
+    "invalid camera",
+    "edit mode rejected without altering it",
+    "mode preserved"
+  ]
+}

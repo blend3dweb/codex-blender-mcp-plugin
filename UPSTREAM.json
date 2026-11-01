@@ -1,0 +1,13 @@
+{
+  "server": {
+    "repository": "https://github.com/ahujasid/blender-mcp",
+    "commit": "992233bb258975a05eec8b5691465c50c2831e34",
+    "version": "2.2.6",
+    "license": "MIT"
+  },
+  "inspiration": {
+    "repository": "https://github.com/artmediastudio/kimi-blender-mcp-plugin",
+    "commit": "251a7ee2d0c8af0837661539ff0f490b8dad7c69"
+  },
+  "changes": "Codex packaging, studio and spatial tools, reversible coordinate-edit sessions, tests and workflows. Vendored upstream server and addon unchanged."
+}

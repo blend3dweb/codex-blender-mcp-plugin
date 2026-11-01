@@ -1,0 +1,24 @@
+{
+  "blender": "5.2.2 LTS",
+  "checks": [
+    "bevel",
+    "bevel",
+    "subdivide",
+    "decimate",
+    "remesh",
+    "uv_smart",
+    "material",
+    "sculpt_deform",
+    "keyframe",
+    "keyframe",
+    "turntable",
+    "rigid_body",
+    "cloth",
+    "render_settings",
+    "inspect",
+    "save_copy",
+    "rejected:bevel",
+    "rejected:subdivide",
+    "rejected:save_copy"
+  ]
+}

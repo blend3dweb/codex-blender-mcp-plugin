@@ -1,0 +1,13 @@
+.venv/
+.state/
+__pycache__/
+*.py[cod]
+codex-mcp.toml
+.env
+.env.*
+!.env.example
+*.blend
+*.blend1
+*.log
+test-output/
+dist/

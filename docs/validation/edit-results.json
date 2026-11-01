@@ -1,0 +1,24 @@
+{
+  "blender": "5.2.2 LTS",
+  "checks": [
+    "snapshot listed",
+    "locality: one vertex moved",
+    "world displacement under scaled transform",
+    "fixed view metadata",
+    "changed frame detected",
+    "exact coordinate restore",
+    "compare after restore is zero",
+    "oversized displacement refused",
+    "failed validation leaves coordinates intact",
+    "intervening edit protected",
+    "intervening edit retained",
+    "discard frees memory",
+    "unknown snapshot refused",
+    "shared data refused",
+    "shape keys refused",
+    "edit mode refused",
+    "snapshot budget enforced",
+    "all targets preflight before write",
+    "earlier target unchanged on conflict"
+  ]
+}

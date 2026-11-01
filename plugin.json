@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "codex-blender-mcp",
+  "version": "1.3.0",
+  "description": "Blender MCP workflows with spatial diagnostics and reversible local geometry edits.",
+  "license": "MIT",
+  "keywords": [
+    "blender",
+    "3d",
+    "mcp",
+    "modeling"
+  ],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Blender for Codex",
+        "shortDescription": "Inspect and edit local Blender scenes",
+        "longDescription": "Connect Codex to Blender through a local MCP server. Bundles the MIT upstream server and addon; requires Python setup and an enabled Blender addon.",
+        "capabilities": [
+          "Read",
+          "Write"
+        ]
+      }
+    }
+  }
+}
