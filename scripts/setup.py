@@ -43,7 +43,7 @@ def main():
         parser.error('--name must contain only letters, digits, underscore or hyphen.')
     if sys.version_info < (3, 10):
         parser.error('Python 3.10 or newer is required.')
-    runtime = ROOT / '.venv'
+    runtime = Path(os.environ.get('PLUGIN_DATA', str(ROOT))) / '.venv'
     python = runtime / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
     if not python.exists():
         venv.EnvBuilder(with_pip=True).create(runtime)

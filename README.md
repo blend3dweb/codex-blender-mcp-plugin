@@ -1,4 +1,4 @@
-# Blender for Codex — 1.3
+# Blender for Codex — 1.3.1
 
 Открытый проект: приветствуются [участие в разработке](CONTRIBUTING.md), сообщения об ошибках и pull requests. Ближайшие задачи — в [плане развития](ROADMAP.md).
 
@@ -16,6 +16,28 @@
 Выполнение bpy имеет права процесса Blender на файлы компьютера. Дополнение слушает локальное соединение без отдельного пароля; не публикуйте этот порт в сеть.
 
 ## Установка на Windows
+
+### Установка в список «Плагины»
+
+```powershell
+codex plugin marketplace add blend3dweb/codex-blender-mcp-plugin
+codex plugin add codex-blender-mcp@blend3dweb
+```
+
+Каталог появится под именем **Blend3DWeb**, плагин — **Blender for Codex**. GitHub-репозиторий публичный; это пользовательский marketplace, не публикация в общем каталоге OpenAI.
+
+После установки подготовьте Python-окружение именно установленной копии. Если раньше сервер был добавлен отдельно через `codex mcp add`, сначала удалите дублирующую ручную запись командой `codex mcp remove codex-blender` — установленный плагин предоставляет свой сервер с этим именем. Затем:
+
+```powershell
+$server = (codex mcp get codex-blender --json | ConvertFrom-Json).transport
+$env:PLUGIN_DATA = $server.env.PLUGIN_DATA
+python (Join-Path $server.env.PLUGIN_ROOT 'scripts/setup.py')
+Remove-Item Env:PLUGIN_DATA
+```
+
+Окружение хранится в постоянном `PLUGIN_DATA`, отдельно от версионного кэша. Установите дополнение Blender по шагам ниже и перезапустите Codex. Не запускайте `--register-codex` при установке через marketplace: это альтернативный способ подключения.
+
+### Альтернатива: только MCP через CLI
 
 Нужны Python 3.10+ и Blender. Проверенная версия Blender указана в VALIDATION.md.
 
